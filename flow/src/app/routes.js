@@ -1,3 +1,4 @@
+/* @flow */
 // There to appease react/react-in-jsx-scope rule
 import React from "react";
 
