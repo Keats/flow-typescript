@@ -1,0 +1,21 @@
+{
+  "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "quotes": [1, "double"],
+    "indent": [2, 2, {"SwitchCase": 1}],
+    "new-cap": [2, {
+      "newIsCap": true,
+      "newIsCap": true,
+      "capIsNew": false
+    }],
+  }
+}

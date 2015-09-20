@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.lists {
+  display: flex;
+  align-items: flex-start;
+}
+
+.list {
+  width: 270px;
+  background-color: #E2E4E6;
+  border-radius: 5px;
+  padding: 5px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list__name {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.addForm {
+  input[type="text"] {
+    width: 100%;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 1rem;
+
+  h3 {
+    margin: 0;
+  }
+}
