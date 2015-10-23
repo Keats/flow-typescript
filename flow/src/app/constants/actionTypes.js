@@ -1,4 +1,3 @@
-export const CREATE_LIST = "CREATE_LIST";
-export const DELETE_LIST = "DELETE_LIST";
+export const LIST_CREATE = "LIST_CREATE";
 
-export const CREATE_CARD = "CREATE_CARD";
+export const CARD_CREATE = "CARD_CREATE";

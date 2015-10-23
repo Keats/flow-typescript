@@ -9,6 +9,9 @@
   "plugins": [
     "react"
   ],
+  "globals": {
+    "__PRODUCTION__": true
+  },
   "rules": {
     "quotes": [1, "double"],
     "indent": [2, 2, {"SwitchCase": 1}],

@@ -4,8 +4,9 @@ npm run build && node server.js &
 webpack=$!
 npm run gulp:watch &
 gulp=$!
-
+npm run flow &
+flow=$!
 # Getting `invalid signal specification` for some reasons
 # but it works so meh
-trap INT " kill -9 ${webpack} ${gulp}; exit 1"
+trap INT " kill -9 ${webpack} ${gulp} ${flow}; exit 1"
 wait

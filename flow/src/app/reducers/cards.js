@@ -1,23 +1,25 @@
 import Immutable from "immutable";
 
 import {
-  CREATE_CARD,
+  CARD_CREATE,
 } from "../constants/actionTypes";
 
 
-const Card = Immutable.Record({id: -1, name: "Unknown"});
-const initialState = Immutable.fromJS({});
+const Card = Immutable.Record({
+  id: -1,
+  name: "Unknown",
+});
+const initialState = Immutable.Map();
 
 
-function createCard(state, action) {
-  const { id, name } = action.payload;
-  return state.set(String(id), new Card({id, name}));
+function createCard(state, payload) {
+  return state.set(payload.id, new Card(payload));
 }
 
 export default function cards(state = initialState, action) {
   switch (action.type) {
-    case CREATE_CARD:
-      return createCard(state, action);
+    case CARD_CREATE:
+      return createCard(state, action.payload);
     default:
       return state;
   }

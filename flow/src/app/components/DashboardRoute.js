@@ -1,12 +1,13 @@
-import Immutable from "immutable";
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-
-import List from "./list";
-import EmptyList from "./emptyList";
+import Immutable from "immutable";
 
 
-class ListContainer extends React.Component {
+import List from "./dashboard/List";
+import EmptyList from "./dashboard/EmptyList";
+
+
+export class DashboardRoute extends React.Component {
   renderLists() {
     const lists = [];
     this.props.lists.forEach(list => {
@@ -28,15 +29,17 @@ class ListContainer extends React.Component {
   }
 }
 
-ListContainer.propTypes = {
-  lists: PropTypes.instanceOf(Immutable.Map).isRequired,
+DashboardRoute.propTypes = {
+  lists: PropTypes.instanceOf(Immutable.Map),
 };
 
-
-function mapState(state) {
+function mapStateToProps(state) {
   return {
     lists: state.lists,
   };
 }
 
-export default connect(mapState)(ListContainer);
+export default connect(
+  mapStateToProps,
+)(DashboardRoute);
+

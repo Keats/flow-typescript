@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 
 
-class AddForm extends React.Component {
+export class AddForm extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     this.props.callback(this.refs.addInput.value);

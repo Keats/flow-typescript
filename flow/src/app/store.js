@@ -1,3 +1,4 @@
+/* @flow */
 import {
   createStore, applyMiddleware, combineReducers, compose,
 } from "redux";
@@ -9,7 +10,6 @@ import createHistory from "history/lib/createBrowserHistory";
 import thunk from "redux-thunk";
 
 import * as reducers from "./reducers/index";
-import routes from "./routes";
 
 
 const reducer = combineReducers({
@@ -18,20 +18,14 @@ const reducer = combineReducers({
 });
 const middlewares = [thunk];
 
+const reduxRouter = reduxReactRouter({ createHistory });
 
-let finalCreateStore;
+let finalCreateStore = compose(
+  applyMiddleware(...middlewares),
+  reduxRouter
+)(createStore);
 
-const reduxRouter = reduxReactRouter({
-  routes,
-  createHistory,
-});
-
-if (__PRODUCTION__) {
-  finalCreateStore = compose(
-    applyMiddleware(...middlewares),
-    reduxRouter
-  )(createStore);
-} else {
+if (__PRODUCTION__ === false) {
   const { devTools, persistState } = require("redux-devtools");
   finalCreateStore = compose(
     applyMiddleware(...middlewares),
@@ -41,7 +35,7 @@ if (__PRODUCTION__) {
   )(createStore);
 }
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: any) {
   const store = finalCreateStore(reducer, initialState);
 
   if (module.hot) {
@@ -54,5 +48,3 @@ export default function configureStore(initialState) {
 
   return store;
 }
-
-

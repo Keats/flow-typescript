@@ -2,13 +2,16 @@
 // There to appease react/react-in-jsx-scope rule
 import React from "react";
 
-import { Route } from "react-router";
+import { Route, IndexRoute } from "react-router";
 
-import App from "./components/app";
+import AppRoute from "./components/AppRoute";
+import DashboardRoute from "./components/DashboardRoute";
+
 
 const routes = (
-  <Route path="/" component={App}>
-    <Route path="about" component={App} />
+  <Route path="/" component={AppRoute}>
+    <IndexRoute component={DashboardRoute} />
+    <Route path="about" component={DashboardRoute} />
   </Route>
 );
 

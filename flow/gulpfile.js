@@ -4,7 +4,7 @@ var sass = require("gulp-sass");
 
 var isProd = process.env.NODE_ENV === "production";
 var outputFolder = isProd ? "./dist" : "./build";
-var sassFiles = "src/style/**/*.scss"
+var sassFiles = "src/style/**/*.scss";
 
 
 gulp.task("sass", function() {

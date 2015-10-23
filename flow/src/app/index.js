@@ -1,13 +1,14 @@
+/* @flow */
 import React from "react";
 import ReactDom from "react-dom";
-
 import { Provider } from "react-redux";
 import { ReduxRouter } from "redux-router";
-
 import configureStore from "./store";
 
+import routes from "./routes";
 
 const store = configureStore();
+
 
 class Root extends React.Component {
   renderDevTools() {
@@ -27,7 +28,9 @@ class Root extends React.Component {
     return (
       <div>
         <Provider store={store}>
-          <ReduxRouter />
+          <ReduxRouter>
+            {routes}
+          </ReduxRouter>
         </Provider>
         {this.renderDevTools()}
       </div>

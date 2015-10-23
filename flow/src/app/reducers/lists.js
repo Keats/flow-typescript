@@ -1,39 +1,35 @@
 import Immutable from "immutable";
 
 import {
-  CREATE_LIST, DELETE_LIST, CREATE_CARD,
+  LIST_CREATE, CARD_CREATE,
 } from "../constants/actionTypes";
 
 
-export const List = Immutable.Record(
-  {
-    id: -1,
-    name: "Unknown",
-    cards: Immutable.List(),
-  },
-);
-const initialState = Immutable.fromJS({});
+export const List = Immutable.Record({
+  id: -1,
+  name: "Unknown",
+  cards: Immutable.List(),
+});
+const initialState = Immutable.Map();
 
 
 function createList(state, payload) {
-  return state.set(String(payload.id), new List(payload));
+  return state.set(payload.id, new List(payload));
 }
 
 
 function createCard(state, payload) {
-  const { id, columnId } = payload;
-  return state.updateIn([String(columnId), "cards"], cards => cards.push(id));
+  const { id, listId } = payload;
+  return state.updateIn([listId, "cards"], cards => cards.push(id));
 }
 
 
 export default function lists(state = initialState, action) {
   switch (action.type) {
-    case CREATE_LIST:
+    case LIST_CREATE:
       return createList(state, action.payload);
-    case CREATE_CARD:
+    case CARD_CREATE:
       return createCard(state, action.payload);
-    case DELETE_LIST:
-      return state;
     default:
       return state;
   }

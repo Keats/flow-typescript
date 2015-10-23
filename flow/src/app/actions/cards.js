@@ -1,17 +1,18 @@
 import {
-  CREATE_LIST,
+  CARD_CREATE,
 } from "../constants/actionTypes";
 
 
 let sequence = 0;
 
-export function addList(name) {
+export function addCard(listId, name) {
   const id = sequence;
   sequence++;
 
   return {
-    type: CREATE_LIST,
+    type: CARD_CREATE,
     payload: {
+      listId,
       id,
       name,
     },
