@@ -1,14 +1,15 @@
+/* @flow */
 import React, { PropTypes } from "react";
 
 
 export class AddForm extends React.Component {
-  onSubmit(event) {
+  onSubmit(event: SyntheticEvent) {
     event.preventDefault();
     this.props.callback(this.refs.addInput.value);
     this.refs.addInput.value = "";
   }
 
-  render() {
+  render(): any {
     const { placeholder } = this.props;
 
     return (

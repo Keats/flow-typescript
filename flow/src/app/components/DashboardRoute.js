@@ -1,3 +1,4 @@
+/* @flow */
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import Immutable from "immutable";
@@ -8,7 +9,7 @@ import EmptyList from "./dashboard/EmptyList";
 
 
 export class DashboardRoute extends React.Component {
-  renderLists() {
+  renderLists(): Array<ReactElement> {
     const lists = [];
     this.props.lists.forEach(list => {
       lists.push(<List key={list.id} list={list} />);
@@ -17,7 +18,7 @@ export class DashboardRoute extends React.Component {
     return lists;
   }
 
-  render() {
+  render(): any {
     return (
       <div>
         <h3>A random board</h3>

@@ -1,3 +1,4 @@
+/* @flow */
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import Immutable from "immutable";
@@ -9,7 +10,7 @@ import { addCard } from "../../actions/cards";
 
 
 export class List extends React.Component {
-  renderCards() {
+  renderCards(): Array<ReactElement> {
     const cards = [];
     this.props.cards.map(card => {
       cards.push(<Card key={card.id} card={card} />);
@@ -17,7 +18,7 @@ export class List extends React.Component {
     return cards;
   }
 
-  render() {
+  render(): any {
     return (
       <div className="list">
         <h2 className="list__name">{this.props.list.name}</h2>

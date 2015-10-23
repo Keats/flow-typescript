@@ -10,7 +10,9 @@
     "react"
   ],
   "globals": {
-    "__PRODUCTION__": true
+    "__PRODUCTION__": true,
+    "ReactElement": true,
+    "SyntheticEvent": true
   },
   "rules": {
     "quotes": [1, "double"],

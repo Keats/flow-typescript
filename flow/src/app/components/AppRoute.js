@@ -1,12 +1,11 @@
+/* @flow */
 import React, { PropTypes } from "react";
 
 
 class AppRoute extends React.Component {
-  render() {
+  render(): any {
     return (
-      <div>
-        {this.props.children}
-      </div>
+      <div>{this.props.children} </div>
     );
   }
 }

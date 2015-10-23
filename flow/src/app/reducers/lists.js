@@ -1,3 +1,4 @@
+/* @flow */
 import Immutable from "immutable";
 
 import {
@@ -24,7 +25,7 @@ function createCard(state, payload) {
 }
 
 
-export default function lists(state = initialState, action) {
+export default function lists(state = initialState, action: any) {
   switch (action.type) {
     case LIST_CREATE:
       return createList(state, action.payload);
