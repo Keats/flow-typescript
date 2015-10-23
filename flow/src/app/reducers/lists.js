@@ -14,12 +14,12 @@ export const List = Immutable.Record({
 const initialState = Immutable.Map();
 
 
-function createList(state, payload) {
+function createList(state: Map, payload) {
   return state.set(payload.id, new List(payload));
 }
 
 
-function createCard(state, payload) {
+function createCard(state: Map, payload) {
   const { id, listId } = payload;
   return state.updateIn([listId, "cards"], cards => cards.push(id));
 }

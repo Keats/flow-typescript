@@ -13,7 +13,7 @@ const Card = Immutable.Record({
 const initialState = Immutable.Map();
 
 
-function createCard(state, payload) {
+function createCard(state: Map, payload) {
   return state.set(payload.id, new Card(payload));
 }
 
