@@ -1,11 +1,12 @@
+/* @flow */
 import {
   CARD_CREATE,
 } from "../constants/actionTypes";
 
 
-let sequence = 0;
+let sequence: number = 0;
 
-export function addCard(listId, name) {
+export function addCard(listId: number, name: string): Action {
   const id = sequence;
   sequence++;
 
