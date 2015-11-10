@@ -3,7 +3,7 @@ import React, { PropTypes } from "react";
 
 
 class AppRoute extends React.Component {
-  render(): any {
+  render(): ReactElement {
     return (
       <div>{this.props.children} </div>
     );
