@@ -9,7 +9,7 @@ export class AddForm extends React.Component {
     this.refs.addInput.value = "";
   }
 
-  render(): any {
+  render(): ReactElement {
     const { placeholder } = this.props;
 
     return (

@@ -12,7 +12,8 @@
   "globals": {
     "__PRODUCTION__": true,
     "ReactElement": true,
-    "SyntheticEvent": true
+    "SyntheticEvent": true,
+    "Action": true
   },
   "rules": {
     "quotes": [1, "double"],

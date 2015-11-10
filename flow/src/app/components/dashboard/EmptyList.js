@@ -8,7 +8,7 @@ import { addList } from "../../actions/lists";
 
 
 export class EmptyList extends React.Component {
-  render(): any {
+  render(): ReactElement {
     return (
       <div className="list list--add">
         <AddForm placeholder="Add a list" callback={this.props.addList} />

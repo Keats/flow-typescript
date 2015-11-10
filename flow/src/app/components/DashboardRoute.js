@@ -6,6 +6,7 @@ import Immutable from "immutable";
 
 import List from "./dashboard/List";
 import EmptyList from "./dashboard/EmptyList";
+import { getAllLists } from "../reducers/lists";
 
 
 export class DashboardRoute extends React.Component {
@@ -18,29 +19,27 @@ export class DashboardRoute extends React.Component {
     return lists;
   }
 
-  render(): any {
+  render(): ReactElement {
     return (
       <div>
-        <h3>A random board</h3>
-        <div className="lists">
-          {this.renderLists()}
-        </div>
+        <h2>Dashboard</h2>
+        <div className="lists">{this.renderLists()}</div>
       </div>
     );
   }
 }
 
 DashboardRoute.propTypes = {
-  lists: PropTypes.instanceOf(Immutable.Map),
+  lists: PropTypes.instanceOf(Immutable.List).isRequired,
 };
 
 function mapStateToProps(state) {
   return {
-    lists: state.lists,
+    lists: getAllLists(state),
   };
 }
 
 export default connect(
   mapStateToProps,
+  null,
 )(DashboardRoute);
-

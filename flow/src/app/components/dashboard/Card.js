@@ -4,7 +4,7 @@ import Immutable from "immutable";
 
 
 export class Card extends React.Component {
-  render(): any {
+  render(): ReactElement {
     return (
       <div className="card">
         <h3>{this.props.card.name}</h3>

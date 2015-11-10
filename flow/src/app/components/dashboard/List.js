@@ -7,6 +7,7 @@ import Immutable from "immutable";
 import AddForm from "./AddForm";
 import Card from "./Card";
 import { addCard } from "../../actions/cards";
+import { getListCards } from "../../reducers/cards";
 
 
 export class List extends React.Component {
@@ -18,12 +19,13 @@ export class List extends React.Component {
     return cards;
   }
 
-  render(): any {
+  render(): ReactElement {
+    const { id, name } = this.props.list;
     return (
       <div className="list">
-        <h2 className="list__name">{this.props.list.name}</h2>
+        <h2 className="list__name">{name}</h2>
         {this.renderCards()}
-        <AddForm placeholder="Add a card" callback={this.props.addCard} />
+        <AddForm placeholder="Add a card" callback={this.props.addCard.bind(null, id)} />
       </div>
     );
   }
@@ -38,17 +40,11 @@ List.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    cards: ownProps.list.cards.map(cardId => state.cards.get(cardId)),
-  };
-}
-
-function mapActionCreators(dispatch, ownProps) {
-  return {
-    addCard: (name) => dispatch(addCard(ownProps.list.id, name)),
+    cards: getListCards(state, ownProps.list.cards),
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapActionCreators,
+  { addCard },
 )(List);

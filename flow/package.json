@@ -33,7 +33,7 @@
     "eslint-loader": "^1.0.0",
     "eslint-plugin-react": "^3.2.2",
     "express": "^4.13.3",
-    "flow-bin": "^0.17.0",
+    "flow-bin": "^0.18.1",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.0.1",
     "gulp-sass": "^2.0.4",
@@ -52,7 +52,7 @@
     "react-redux": "^4.0.0",
     "react-router": "1.0.0",
     "redux": "^3.0.0",
-    "redux-router": "1.0.0-beta3",
+    "redux-router": "1.0.0-beta4",
     "redux-thunk": "^1.0.0"
   }
 }

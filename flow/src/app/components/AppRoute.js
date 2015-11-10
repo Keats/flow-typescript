@@ -1,11 +1,21 @@
 /* @flow */
 import React, { PropTypes } from "react";
+import { Link } from "react-router";
 
 
-class AppRoute extends React.Component {
+export class AppRoute extends React.Component {
   render(): ReactElement {
     return (
-      <div>{this.props.children} </div>
+      <div>
+        <header>React/Redux example</header>
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+          </ul>
+        </nav>
+        <div>{this.props.children}</div>
+      </div>
     );
   }
 }

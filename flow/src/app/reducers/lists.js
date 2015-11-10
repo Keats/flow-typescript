@@ -35,3 +35,7 @@ export default function lists(state = initialState, action: Action) {
       return state;
   }
 }
+
+export function getAllLists(state: any): Immutable.List {
+  return state.lists.toList();
+}

@@ -1,3 +1,4 @@
+/* @flow */
 import {
   LIST_CREATE,
 } from "../constants/actionTypes";

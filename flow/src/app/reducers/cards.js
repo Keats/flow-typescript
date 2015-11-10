@@ -25,3 +25,10 @@ export default function cards(state = initialState, action: Action) {
       return state;
   }
 }
+
+export function getListCards(state: any, cardIds: Immutable.List): Immutable.List {
+  if (cardIds.size === 0) {
+    return Immutable.List();
+  }
+  return state.cards.filter(card => cardIds.indexOf(card.id) > -1).toList();
+}
