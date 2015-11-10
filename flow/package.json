@@ -1,10 +1,9 @@
 {
-  "name": "react-example",
+  "name": "react-example-flow",
   "version": "0.0.0",
-  "description": "A react example",
+  "description": "A react example using Flow",
   "scripts": {
     "clean": "rm -rf dist && rm -rf build",
-    "webpack:prod": "webpack -p --config webpack.production.config.js",
     "build": "npm run clean && npm run lint && npm run sass && webpack",
     "dist": "npm run clean && npm run lint && NODE_ENV=production npm run sass && npm run webpack:prod",
     "lint": "eslint src",
@@ -29,7 +28,6 @@
     "babel-loader": "^5.3.2",
     "babel-plugin-react-transform": "^1.0.5",
     "babel-runtime": "^5.8.20",
-    "chai": "^3.2.0",
     "eslint": "^1.0.0",
     "eslint-config-airbnb": "^0.1.0",
     "eslint-loader": "^1.0.0",
@@ -52,7 +50,7 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
-    "react-router": "1.0.0-rc3",
+    "react-router": "1.0.0",
     "redux": "^3.0.0",
     "redux-router": "1.0.0-beta3",
     "redux-thunk": "^1.0.0"
