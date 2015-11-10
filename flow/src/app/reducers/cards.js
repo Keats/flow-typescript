@@ -13,11 +13,11 @@ const Card = Immutable.Record({
 const initialState = Immutable.Map();
 
 
-function createCard(state: Map, payload) {
+function createCard(state: Immutable.Map, payload) {
   return state.set(payload.id, new Card(payload));
 }
 
-export default function cards(state = initialState, action: any) {
+export default function cards(state = initialState, action: Action) {
   switch (action.type) {
     case CARD_CREATE:
       return createCard(state, action.payload);

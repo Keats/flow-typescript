@@ -25,7 +25,7 @@ function createCard(state: Immutable.Map, payload) {
 }
 
 
-export default function lists(state = initialState, action: any) {
+export default function lists(state = initialState, action: Action) {
   switch (action.type) {
     case LIST_CREATE:
       return createList(state, action.payload);
