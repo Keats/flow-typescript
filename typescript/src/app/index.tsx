@@ -1,15 +1,17 @@
-import React from "react";
-import ReactDom from "react-dom";
-
+import * as React from "react";
+import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import { ReduxRouter } from "redux-router";
 
 import configureStore from "./store";
-
+import routes from "./routes";
 
 const store = configureStore();
 
-class Root extends React.Component {
+declare var __PRODUCTION__: boolean;
+
+
+class Root extends React.Component<{}, {}> {
   renderDevTools() {
     if (__PRODUCTION__) {
       return null;
@@ -27,7 +29,9 @@ class Root extends React.Component {
     return (
       <div>
         <Provider store={store}>
-          <ReduxRouter />
+          <ReduxRouter>
+            {routes}
+          </ReduxRouter>
         </Provider>
         {this.renderDevTools()}
       </div>

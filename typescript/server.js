@@ -1,24 +1,35 @@
+var path = require('path');
+var express = require('express');
 var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
 
+var app = express();
+var compiler = webpack(config);
 
-new WebpackDevServer(webpack(config), {
-  contentBase: config.output.path,
-  hot: true,
-  historyApiFallback: true,
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: true
-  },
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath,
   stats: {
-    colors: true,
-    exclude: ['node_modules']
+    exclude: ['node_modules'],
   }
-}).listen(3000, 'localhost', function (err) {
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('*', function(req, res) {
+  if (req.url.slice(-3) === "css") {
+    res.type("css");
+    res.sendFile(path.join(__dirname, 'build', 'app.css'));
+  } else {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  }
+});
+
+app.listen(3000, 'localhost', function (err) {
   if (err) {
     console.log(err);
+    return;
   }
 
-  console.log('Listening at localhost:3000');
+  console.log('Listening at http://localhost:3000');
 });

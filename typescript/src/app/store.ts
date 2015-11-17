@@ -1,37 +1,34 @@
 import {
-  createStore, applyMiddleware, combineReducers, compose,
+  createStore, applyMiddleware, combineReducers, compose
 } from "redux";
 import {
   routerStateReducer,
-  reduxReactRouter,
+  reduxReactRouter
 } from "redux-router";
-import createHistory from "history/lib/createBrowserHistory";
-import thunk from "redux-thunk";
+const createHistory = require("history/lib/createBrowserHistory");
 
 import * as reducers from "./reducers/index";
-import routes from "./routes";
+
+
+declare var __PRODUCTION__: boolean;
+declare var module: any;
 
 
 const reducer = combineReducers({
   router: routerStateReducer,
-  ...reducers,
+  lists: reducers.lists,
+  cards: reducers.cards
 });
-const middlewares = [thunk];
+const middlewares: any = [];
 
+const reduxRouter = reduxReactRouter({ createHistory });
 
-let finalCreateStore;
+let finalCreateStore = compose(
+  applyMiddleware(...middlewares),
+  reduxRouter
+)(createStore);
 
-const reduxRouter = reduxReactRouter({
-  routes,
-  createHistory,
-});
-
-if (__PRODUCTION__) {
-  finalCreateStore = compose(
-    applyMiddleware(...middlewares),
-    reduxRouter
-  )(createStore);
-} else {
+if (__PRODUCTION__ === false) {
   const { devTools, persistState } = require("redux-devtools");
   finalCreateStore = compose(
     applyMiddleware(...middlewares),
@@ -41,11 +38,11 @@ if (__PRODUCTION__) {
   )(createStore);
 }
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState?: any) {
   const store = finalCreateStore(reducer, initialState);
 
   if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
+    // enable Webpack hot module replacement for reducers
     module.hot.accept("./reducers", () => {
       const nextReducer = require("./reducers");
       store.replaceReducer(nextReducer);
@@ -54,5 +51,3 @@ export default function configureStore(initialState) {
 
   return store;
 }
-
-

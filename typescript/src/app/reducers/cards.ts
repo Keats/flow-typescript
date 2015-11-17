@@ -1,4 +1,4 @@
-import Immutable from "immutable";
+import * as Immutable from "immutable";
 
 import {
   CREATE_CARD,
@@ -14,11 +14,18 @@ function createCard(state, action) {
   return state.set(String(id), new Card({id, name}));
 }
 
-export default function cards(state = initialState, action) {
+export default function cards(state = initialState, action: any) {
   switch (action.type) {
     case CREATE_CARD:
       return createCard(state, action);
     default:
       return state;
   }
+}
+
+export function getListCards(state: any, cardIds: Immutable.List<number>) {
+  if (cardIds.size === 0) {
+    return Immutable.List();
+  }
+  return state.cards.filter(card => cardIds.indexOf(card.id) > -1).toList();
 }

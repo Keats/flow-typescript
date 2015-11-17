@@ -1,4 +1,4 @@
-import Immutable from "immutable";
+import * as Immutable from "immutable";
 
 import {
   CREATE_LIST, DELETE_LIST, CREATE_CARD,
@@ -10,10 +10,8 @@ export const List = Immutable.Record(
     id: -1,
     name: "Unknown",
     cards: Immutable.List(),
-  },
+  }
 );
-const initialState = Immutable.fromJS({});
-
 
 function createList(state, payload) {
   return state.set(String(payload.id), new List(payload));
@@ -26,7 +24,7 @@ function createCard(state, payload) {
 }
 
 
-export default function lists(state = initialState, action) {
+export default function lists(state = Immutable.Map(), action: any) {
   switch (action.type) {
     case CREATE_LIST:
       return createList(state, action.payload);
@@ -37,4 +35,8 @@ export default function lists(state = initialState, action) {
     default:
       return state;
   }
+}
+
+export function getAllLists(state: any) {
+  return state.lists.toList();
 }
