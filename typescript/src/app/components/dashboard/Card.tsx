@@ -1,11 +1,10 @@
 import * as React from "react";
-import * as Immutable from "immutable";
 
+import { ICardRecord } from "../../interfaces";
 
-// TODO: https://github.com/facebook/immutable-js/issues/341
 interface ICardProps {
   key: number;
-  card: Immutable.Record.IRecord<any>;
+  card: ICardRecord;
 }
 
 export class Card extends React.Component<ICardProps, {}> {

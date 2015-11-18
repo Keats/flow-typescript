@@ -16,7 +16,7 @@ module.exports = {
     new webpack.DefinePlugin({
       __PRODUCTION__: false,
     }),
-    new HtmlWebpackPlugin({template: "src/index.html"}),
+    new HtmlWebpackPlugin({template: "src/index.html"})
   ],
   resolve: {
     extensions: ['', '.ts', '.tsx', '.js']

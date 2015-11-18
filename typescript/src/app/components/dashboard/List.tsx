@@ -7,19 +7,20 @@ import AddForm from "./AddForm";
 import Card from "./Card";
 import { addCard } from "../../actions/cards";
 import { getListCards } from "../../reducers/cards";
+import { IState, IListRecord, ICardRecord } from "../../interfaces";
 
 
 interface IListProps {
   key: number;
-  list: Immutable.Record.IRecord<any>;
+  list: IListRecord;
 
-  cards?: Immutable.List<Immutable.Record.IRecord<any>>;
+  cards?: Immutable.List<ICardRecord>;
   addCard?: () => void;
 }
 
 export class List extends React.Component<IListProps, {}> {
   renderCards() {
-    const cards = [];
+    const cards: Array<any> = [];
     this.props.cards.map(card => {
       cards.push(<Card key={card.id} card={card} />);
     });
@@ -38,7 +39,7 @@ export class List extends React.Component<IListProps, {}> {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state: IState, ownProps: IListProps) {
   return {
     cards: getListCards(state, ownProps.list.cards),
   };

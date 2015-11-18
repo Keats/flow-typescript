@@ -6,6 +6,7 @@ import * as Immutable from "immutable";
 import List from "./dashboard/List";
 import EmptyList from "./dashboard/EmptyList";
 import { getAllLists } from "../reducers/lists";
+import { IState } from "../interfaces";
 
 
 interface IDashboardRouteProps {
@@ -14,7 +15,8 @@ interface IDashboardRouteProps {
 
 export class DashboardRoute extends React.Component<IDashboardRouteProps, {}> {
   renderLists() {
-    const lists = [];
+    // TODO: can we use the right type of component here?
+    const lists: Array<any> = [];
     this.props.lists.forEach(list => {
       lists.push(<List key={list.id} list={list} />);
     });
@@ -34,7 +36,7 @@ export class DashboardRoute extends React.Component<IDashboardRouteProps, {}> {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: IState) {
   return {
     lists: getAllLists(state),
   };

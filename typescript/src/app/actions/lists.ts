@@ -5,7 +5,7 @@ import {
 
 let sequence = 0;
 
-export function addList(name) {
+export function addList(name: string) {
   const id = sequence;
   sequence++;
 
